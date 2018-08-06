@@ -27,7 +27,7 @@ module WillPaginate
       # <tt>:outer_window</tt> options.
       def windowed_page_numbers
         inner_window, outer_window = @options[:inner_window].to_i, @options[:outer_window].to_i
-        window_from = current_page - inner_window
+        window_from = current_page - (inner_window + 1)
         window_to = current_page + inner_window
         
         # adjust lower or upper limit if either is out of bounds
@@ -36,7 +36,7 @@ module WillPaginate
           window_to = total_pages
         end
         if window_from < 1
-          window_to += 2 - window_from
+          window_to += 1 - window_from
           window_from = 1
           window_to = total_pages if window_to > total_pages
         end
