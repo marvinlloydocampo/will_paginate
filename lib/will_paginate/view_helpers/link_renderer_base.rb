@@ -36,7 +36,7 @@ module WillPaginate
           window_to = total_pages
         end
         if window_from < 1
-          window_to += 1 - window_from
+          window_to += 2 - window_from
           window_from = 1
           window_to = total_pages if window_to > total_pages
         end
